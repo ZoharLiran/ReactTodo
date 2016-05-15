@@ -9,6 +9,9 @@
 
 #import "AppDelegate.h"
 
+/* React-native-navigation */
+#import "RCCManager.h"
+
 #import "RCTRootView.h"
 
 @implementation AppDelegate
@@ -33,6 +36,11 @@
 
   jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
 
+  /* React-native-navigation */
+  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  self.window.backgroundColor = [UIColor whiteColor];
+  [[RCCManager sharedInstance] initBridgeWithBundleURL:jsCodeLocation];
+
   /**
    * OPTION 2
    * Load from pre-bundled file on disk. The static bundle is automatically
@@ -43,16 +51,17 @@
 
 //   jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 
-  RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
-                                                      moduleName:@"Troop"
-                                               initialProperties:nil
-                                                   launchOptions:launchOptions];
-
-  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-  UIViewController *rootViewController = [UIViewController new];
-  rootViewController.view = rootView;
-  self.window.rootViewController = rootViewController;
-  [self.window makeKeyAndVisible];
+/* React-native-navigation */
+//  RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
+//                                                      moduleName:@"Troop"
+//                                               initialProperties:nil
+//                                                   launchOptions:launchOptions];
+//
+//  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//  UIViewController *rootViewController = [UIViewController new];
+//  rootViewController.view = rootView;
+//  self.window.rootViewController = rootViewController;
+//  [self.window makeKeyAndVisible];
   return YES;
 }
 
